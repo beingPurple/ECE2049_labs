@@ -11,6 +11,7 @@
  * into the main file of your project. */
 #include "peripherals.h"
 #include "idle.h"
+#include "play.h"
 #include "shuffle.h"
 
 // Function Prototypes
