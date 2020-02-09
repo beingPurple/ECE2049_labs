@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include "grlib/grlib.h"
 
+
 #include "LcdDriver/Sharp96x96.h"
 #include "LcdDriver/HAL_MSP_EXP430FR5529_Sharp96x96.h"
 

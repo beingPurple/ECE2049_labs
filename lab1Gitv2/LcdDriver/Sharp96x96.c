@@ -57,6 +57,7 @@
 #include <msp430.h>
 #include <stdint.h>
 
+
 #include "grlib/grlib.h"
 #include "Sharp96x96.h"
 #include "HAL_MSP_EXP430FR5529_Sharp96x96.h"

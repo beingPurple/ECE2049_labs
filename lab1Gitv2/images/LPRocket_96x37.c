@@ -30,7 +30,6 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
 
-
 #include "grlib/grlib.h"
 
 static const unsigned char pixel_LPRocket_96x37_1BPP_UNCOMP[] =

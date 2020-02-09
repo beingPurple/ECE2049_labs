@@ -30,7 +30,6 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
 #include "grlib/grlib.h"
-
 //*****************************************************************************
 //
 // Details of this font:
