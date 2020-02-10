@@ -63,6 +63,7 @@ void main(void)
                 if (1)
                 { //if holdOrDraw bool (implements player's choice of holding or drawing where 1 = hold
                   //draw func
+                    userPlay(held);
                 }
             }
             else
