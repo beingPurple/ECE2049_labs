@@ -19,9 +19,16 @@ void userPlay(bool held)
         Graphics_drawStringCentered(&g_sContext, "'#' to draw",
                                     AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
-        char currKey = 0;
-        while(currKey == 0){
-            currKey = 0;
+
+        char k = keyGetter();
+        if(k=='*'){//hold
+
+        }
+        else if(k=='#'){//draw
+
+        }
+        else{//invalid entry
+
         }
     }
 }

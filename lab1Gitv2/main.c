@@ -33,7 +33,8 @@ void main(void)
     configKeypad();
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
-    Graphics_drawStringCentered(&g_sContext, "before switch", AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
+    Graphics_drawStringCentered(&g_sContext, "before switch",
+                                AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
     Graphics_flushBuffer(&g_sContext);
 
     while (1)
@@ -42,13 +43,17 @@ void main(void)
         {
         case 0: //idle case
             idle(); //idle func(pretty lights, wait for player to enter a number)
-            Graphics_drawStringCentered(&g_sContext, "after idle", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "after idle",
+                                        AUTO_STRING_LENGTH, 48, 15,
+                                        OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             state++;
             break;
         case 1:
             Graphics_clearDisplay(&g_sContext); // Clear the display
-            Graphics_drawStringCentered(&g_sContext, "case 1", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "case 1",
+                                        AUTO_STRING_LENGTH, 48, 15,
+                                        OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             shuffle();
             //shuffle and deal, etc.
@@ -60,16 +65,10 @@ void main(void)
         case 2: //player's turn
             if (!held)
             {
-                if (1)
-                { //if holdOrDraw bool (implements player's choice of holding or drawing where 1 = hold
-                  //draw func
-                    userPlay(held);
-                }
-            }
-            else
-            {
-                //hold func
-                held = true; //prevents player from being able to draw after holding
+                //if holdOrDraw bool (implements player's choice of holding or drawing where 1 = hold
+                //draw func
+                userPlay(held);
+
             }
             state++;
             break;
