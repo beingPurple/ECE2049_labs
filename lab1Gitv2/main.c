@@ -21,6 +21,7 @@ void swDelay(char numLoops);
 int state = 0; //state tracker
 int seed; //random state seed
 bool held = false; //tracks if player has held or not
+bool cheld = false;
 
 // Main
 void main(void)
@@ -67,13 +68,20 @@ void main(void)
             {
                 //if holdOrDraw bool (implements player's choice of holding or drawing where 1 = hold
                 //draw func
-                userPlay(held);
+                held = userPlay(held);
 
             }
             state++;
             break;
         case 3: //comp's turn
             //computer decision func
+            if(!cheld){
+                cheld = cPlay(cheld);
+            }
+            if(cheld && held == true){
+                state+= 2;
+            }
+            state--;
 
             break;
         case 4: //end game

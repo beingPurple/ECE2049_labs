@@ -9,8 +9,8 @@
 #ifndef PLAY_H_
 #define PLAY_H_
 
-void userPlay(bool held);
-void cPlay();
+bool userPlay(bool held);
+bool cPlay(bool held);
 
 
 #endif /* PLAY_H_ */
