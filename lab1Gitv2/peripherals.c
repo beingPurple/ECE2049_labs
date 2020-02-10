@@ -20,7 +20,14 @@
 // Globals
 tContext g_sContext;    // user defined type used by graphics library
 
-
+char keyGetter(void){
+    unsigned char currKey = 0;
+        while (currKey != '*')
+        {
+            currKey = getKey();
+        }
+        return getKey;
+}
 void initLeds(void)
 {
     // Configure LEDs as outputs, initialize to logic low (off)
