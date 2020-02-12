@@ -13,6 +13,7 @@
 #include "idle.h"
 #include "play.h"
 #include "shuffle.h"
+#include "cards.h"
 
 // Function Prototypes
 void swDelay(char numLoops);
