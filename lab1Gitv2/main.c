@@ -51,11 +51,8 @@ void main(void)
             state++;
             break;
         case 1:
-            Graphics_clearDisplay(&g_sContext); // Clear the display
-            Graphics_drawStringCentered(&g_sContext, "case 1",
-                                        AUTO_STRING_LENGTH, 48, 15,
-                                        OPAQUE_TEXT);
-            Graphics_flushBuffer(&g_sContext);
+
+            swDelay(3);
             shuffle();
             //shuffle and deal, etc.
             //cut func
@@ -69,23 +66,27 @@ void main(void)
                 //if holdOrDraw bool (implements player's choice of holding or drawing where 1 = hold
                 //draw func
                 held = userPlay(held);
-
+                //function to check if won, takes in current hand
             }
+            //set states based on checked conditions. Check if bust, held, etc.
             state++;
+
             break;
         case 3: //comp's turn
             //computer decision func
             if(!cheld){
                 cheld = cPlay(cheld);
+                //function to check if won, takes in current hand
             }
             if(cheld && held == true){
-                state+= 2;
+                state+= 2;//specify which state to go go, not +=2
             }
-            state--;
+            state--;//needs to be an if statement too
 
             break;
         case 4: //end game
             //end game func (display results, patronize or praise player)
+            //check and display on the LEDs, and then the buzzer. Use demo code functions. setleds(0x15) lights all 4 leds. toggle to make it blink.
             state = 0;
             break;
 

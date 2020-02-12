@@ -25,9 +25,14 @@ void shuffle(void)
     char firstdigit;
     char cutvar[2];
     bool cutEntered = false;
-
     Graphics_clearDisplay(&g_sContext); // Clear the display
-    Graphics_drawStringCentered(&g_sContext, "Cut the deck", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
+                Graphics_drawStringCentered(&g_sContext, "case 1",
+                                            AUTO_STRING_LENGTH, 48, 15,
+                                            OPAQUE_TEXT);
+                Graphics_flushBuffer(&g_sContext);
+
+   // Graphics_clearDisplay(&g_sContext); // Clear the display
+    Graphics_drawStringCentered(&g_sContext, "Cut the deck", AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
     Graphics_flushBuffer(&g_sContext);
 
     while (!cutEntered)
@@ -42,6 +47,7 @@ void shuffle(void)
                 Graphics_clearDisplay(&g_sContext); // Clear the display
                 Graphics_drawStringCentered(&g_sContext, cutvar, AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
                 Graphics_flushBuffer(&g_sContext);
+                swDelay(3);
                 cutEntered = true;
             }
             else if(cutvar[1] > 5)
@@ -52,6 +58,8 @@ void shuffle(void)
                 Graphics_drawStringCentered(&g_sContext, "digit cannot be ", AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
                 Graphics_drawStringCentered(&g_sContext, "greater than 5", AUTO_STRING_LENGTH, 48, 35, OPAQUE_TEXT);
                 Graphics_flushBuffer(&g_sContext);
+
+                swDelay(3);
                 cutvar[1] = getKey;
             }
             else
@@ -60,6 +68,7 @@ void shuffle(void)
                 Graphics_clearDisplay(&g_sContext); // Clear the display
                 Graphics_drawStringCentered(&g_sContext, cutvar, AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
                 Graphics_flushBuffer(&g_sContext);
+                swDelay(3);
                 cutEntered = true;
             }
         }
@@ -78,6 +87,7 @@ void shuffle(void)
             Graphics_drawStringCentered(&g_sContext, " greater than 15", AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
             Graphics_drawStringCentered(&g_sContext, ". Press # or *", AUTO_STRING_LENGTH, 48, 35, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
+            swDelay(3);
         }
         
         /*currKey = getKey();
