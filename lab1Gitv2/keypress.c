@@ -18,7 +18,6 @@ void keypress(void)
     bool digitOne = false;
     bool digitTwo = false;
     int c;
-    int *c;
 
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
@@ -93,4 +92,5 @@ void keypress(void)
     }
 
     c = atoi(cutvar);
+    return c;
 }

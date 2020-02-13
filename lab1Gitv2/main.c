@@ -20,7 +20,7 @@ void swDelay(char numLoops);
 
 // Declare globals here
 int state = 0; //state tracker
-int seed; //random state seed
+int seed; //random shuffle + deal seed
 bool held = false; //tracks if player has held or not
 bool cheld = false;
 
@@ -45,15 +45,15 @@ void main(void)
         {
         case 0: //idle case
             idle(); //idle func(pretty lights, wait for player to enter a number)
-            Graphics_drawStringCentered(&g_sContext, "after idle",
-                                        AUTO_STRING_LENGTH, 48, 15,
-                                        OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "after idle", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             state++;
             break;
         case 1:
 
             swDelay(3);
+            seed = keypress();
+            srand(seed);
             shuffle();
             //shuffle and deal, etc.
             //cut func
