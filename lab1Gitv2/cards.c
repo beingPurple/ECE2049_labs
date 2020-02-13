@@ -8,12 +8,21 @@
 #include <stdio.h>
 #include <string.h>
 
-card makeCard( char name[2],int val){
-card c;
+card makeCard(char name[2],int val)
+{
+    card v;
+    strcpy(v.name, name[2]);
+    v.val = val;
 
-strcpy(c.name, name[2]);
-c.val = val;
-return c;
+    return v;
+
+
 }
+ card genDeck(){
+    card newDeck[52];
 
+    newDeck[0] = makeCard("A♥",1);
+    newDeck[1] = makeCard("2♥",2);
+    return newDeck[52];
+}
 

@@ -13,7 +13,7 @@ typedef struct Cards {
    int val;
 } card;
 
-card makeCard( char name[2],int val);
+card makeCard(char name[2],int val);
 
 
 #endif /* CARDS_H_ */

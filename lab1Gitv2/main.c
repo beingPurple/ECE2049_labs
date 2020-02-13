@@ -12,7 +12,6 @@
 #include "peripherals.h"
 #include "idle.h"
 #include "play.h"
-#include "shuffle.h"
 #include "cards.h"
 
 // Function Prototypes
