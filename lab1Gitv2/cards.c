@@ -8,12 +8,13 @@
 #include <stdio.h>
 #include <string.h>
 
-card makeCard( char name[2],int val){
-card c;
+card makeCard( char name[2],int val)
+{
+    card c;
 
-strcpy(c.name, name[2]);
-c.val = val;
-return c;
+    strcpy(c.name, name[2]);
+    c.val = val;
+    return c;
 }
 
 
