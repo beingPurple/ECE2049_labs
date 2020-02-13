@@ -8,7 +8,9 @@
 #include <stdio.h>
 #include <string.h>
 
-card makeCard(char name[2], int val)
+
+card makeCard(char name[2],int val)
+
 {
     card v;
     strcpy(v.name, name[2]);

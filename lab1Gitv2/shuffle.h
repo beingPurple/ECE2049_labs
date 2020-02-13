@@ -8,7 +8,7 @@
 #ifndef SHUFFLE_H_
 #define SHUFFLE_H_
 
-void shuffle();
+card shuffle();
 
 
 
