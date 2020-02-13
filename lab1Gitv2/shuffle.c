@@ -9,23 +9,13 @@
 #include <string.h>
 #include <msp430.h>
 #include "peripherals.h"
+#include "card.h"
 #define CARD_COUNT 52
 
-const char* cityNames[] = {
-    "Seattle",
-    "Chicago",
-    "San Diego",
-    "Orlando",
-    "Anahiem",
-    "Tampa",
-    "Indianapolis",
-    "Portland",
-    "Chelan",
-    "Sandusky"
-};
+card Deck[52] = cards();
 
 
-void shuffle()
+card shuffle()
 {
     int size = CARD_COUNT;
     if (size > 1)
@@ -36,10 +26,12 @@ void shuffle()
         {
         //pick a random index (j) to swap it with
         //okay to pick same value as i
-        int j = rand() % CARD_COUNT; //random between 0 and 10
-        const char* temp = cityNames[j];
-        cityNames[j] = cityNames[i];
-        cityNames[i] = temp;
+            int j = rand() % CARD_COUNT; //random between 0 and 10
+            card temp = Deck[j];
+            Deck[j] = Deck[i];
+            Deck[i] = temp;
         }
     }
+
+    return Deck[52];
 }
