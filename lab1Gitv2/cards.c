@@ -1,4 +1,4 @@
-/*
+﻿/*
  * cards.c
  *
  *  Created on: Feb 12, 2020
@@ -15,6 +15,7 @@ card makeCard(char name[2],int val)
     v.val = val;
 
     return v;
+
 
 
 }

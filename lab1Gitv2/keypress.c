@@ -92,4 +92,5 @@ void keypress(void)
     }
 
     c = atoi(cutvar);
+    return c;
 }
