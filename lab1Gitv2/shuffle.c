@@ -1,3 +1,4 @@
+
 /*
  * shuffle.c
  *
@@ -9,29 +10,31 @@
 #include <string.h>
 #include <msp430.h>
 #include "peripherals.h"
-#include "card.h"
+#include "cards.h"
+#include <stdio.h>
+
 #define CARD_COUNT 52
 
-card Deck[52] = cards();
 
 
-card shuffle()
+
+card shuffle(card uDeck)
 {
     int size = CARD_COUNT;
-    if (size > 1)
-    {
-        int i;
+    int i;
+    int j = rand() % CARD_COUNT;
+    card sDeck[52] = {0};
+
         //step through each index of the city name array
         for (i = 0; i < size - 1; i++)
         {
-        //pick a random index (j) to swap it with
-        //okay to pick same value as i
-            int j = rand() % CARD_COUNT; //random between 0 and 10
-            card temp = Deck[j];
-            Deck[j] = Deck[i];
-            Deck[i] = temp;
-        }
-    }
+            sDeck[j] = uDeck[i];
+            while (sDeck[j] != 0)
+            {
+                int j = rand() % CARD_COUNT;
 
-    return Deck[52];
+            }
+        }
+
+    return sDeck;
 }

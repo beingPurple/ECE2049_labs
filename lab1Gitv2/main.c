@@ -13,6 +13,8 @@
 #include "idle.h"
 #include "play.h"
 #include "cards.h"
+#include "keypress.h"
+#include "shuffle.h"
 
 // Function Prototypes
 void swDelay(char numLoops);
@@ -20,6 +22,7 @@ void swDelay(char numLoops);
 // Declare globals here
 int state = 0; //state tracker
 int seed; //random shuffle + deal seed
+card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
 
@@ -53,7 +56,7 @@ void main(void)
             swDelay(3);
             seed = keypress();
             srand(seed);
-            shuffle();
+            sDeck = shuffle(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
             //shuffle and deal, etc.
             //cut func
             //shuffle and deal func
