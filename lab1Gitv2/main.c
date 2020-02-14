@@ -23,10 +23,12 @@ void swDelay(char numLoops);
 // Declare globals here
 int state = 0; //state tracker
 int seed; //random shuffle + deal seed
-card uDeck[52];
+//card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
 bool uWon = true; //default is userwins
+char uhand[11][2] = { '0' };
+char chand[11][2] = { '0' };
 
 // Main
 void main(void)
@@ -46,7 +48,7 @@ void main(void)
 
     while (1)
     {
-        card sDeck;
+
         switch (state)
         {
         case 0: //idle case
@@ -63,7 +65,7 @@ void main(void)
             swDelay(3);
             seed = keypress();
             srand(seed);
-            sDeck = shuffleanddeal(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
+            //sDeck = shuffleanddeal(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
             //shuffle and deal, etc.
             //cut func
             //shuffle and deal func
@@ -82,10 +84,20 @@ void main(void)
             //set states based on checked conditions. Check if bust, held, etc.
 
             //check for user bust
-            if (bustCheck(char pHand))                //if player busted
+            if (bustCheck(uhand))                //if player busted
             {
                 uWon = false;                //user lost
                 state = 4;
+            }
+            if (cheld && held == true) //standoff for if both hold before busting. true is player looses
+            {
+
+                if (standoff(uhand, chand) == true) //TODO implement user hand and player hand. They are 2d arrays.
+                {
+                    uWon = false;
+                    state = 4;
+                }
+
             }
 
             state++;
@@ -101,15 +113,15 @@ void main(void)
             }
 
             // check for computer bust
-            if (bustCheck(char cHand))
+            if (bustCheck(chand))
             {
                 state = 4;
             }
 
-            if (cheld && held == true)//standoff for if both hold before busting. true is player looses
+            if (cheld && held == true) //standoff for if both hold before busting. true is player looses
             {
 
-                if (standoff() == true)//TODO implement user hand and player hand. They are 2d arrays.
+                if (standoff(uhand, chand) == true) //TODO implement user hand and player hand. They are 2d arrays.
                 {
                     uWon = false;
                     state = 4;

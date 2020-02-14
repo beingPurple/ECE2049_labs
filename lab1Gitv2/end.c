@@ -17,17 +17,34 @@ bool standoff(char uhand, char chand)
     int userHand = sizeof(uhand) / 2;
     int compHand = sizeof(chand) / 2;
     int i;
+    uhand[1][0]='K';
     bool userLost = false;
     //tally user
-    for (i = 0; i <userHand; i++)
+    for (i = 0; i < userHand; i++)
     {
-        uCount += (int)uhand[i][0];
+        if (uhand[i][0] == 'K'| uhand[i][0] == 'Q' | uhand[i][0] == 'J')
+        {
+            uCount += 10;
+        }
+        else
+        {
+
+        }
+        uCount += (int) uhand[i][0];
     }
     i = 0;
     //tally computer
     for (i = 0; i < compHand; i++)
     {
-        cCount = (int) chand[i][0];
+        if (chand[i][0] == 'K' | chand[i][0] == 'Q' | chand[i][0] == 'J')
+        {
+            cCount += 10;
+        }
+        else
+        {
+
+        }
+        uCount += (int) uhand[i][0];
     }
     if (uCount > cCount)
     {
