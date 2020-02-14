@@ -24,11 +24,15 @@ char shuffle()
     deck[39][0]= genSuit('C');
 
     int i;
-
     char sDeck[52][2];
-    sDeck[52][0] = '0';
     int j = rand() % CARD_COUNT;
+    int k;
 
+    for(k=0;k<52;k++)
+    {
+        sDeck[k][0] = '0';
+        sDeck[k][1] = '0';
+    }
         //step through each index of the city name array
         for (i = 0; i < size - 1; i++)
         {
@@ -46,21 +50,22 @@ char shuffle()
 
 char firstdeal(char sDeck, char hand, int cardcounter)
 {
-    int k;
+    int m;
 
-    for(k=cardcounter;k<cardcounter + 2;k++)
+    for(m=cardcounter;m<cardcounter + 2;m++)
     {
-        hand[k][0] = sDeck[k][0];
+        hand[m][0] = sDeck[m][0];
     }
 
-    cardcounter = k + 1;
+    cardcounter = m;
     return hand;
 }
 
 char deal(char sDeck, char hand, int cardcounter)
 {
-    int k = sizeof(hand[13][0])/sizeof(char);
-    hand[k][0] = sDeck[k][0];
+
+    int n = cardcounter;
+    hand[n][0] = sDeck[n][0];
 
 
     cardcounter +=1;
