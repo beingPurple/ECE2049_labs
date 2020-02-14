@@ -15,6 +15,8 @@
 #include "play.h"
 #include "cards.h"
 #include "keypress.h"
+#include "end.h"
+
 
 // Function Prototypes
 void swDelay(char numLoops);
@@ -25,6 +27,7 @@ int seed; //random shuffle + deal seed
 card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
+
 
 // Main
 void main(void)
@@ -43,6 +46,7 @@ void main(void)
 
     while (1)
     {
+        card sDeck;
         switch (state)
         {
         case 0: //idle case
@@ -70,6 +74,7 @@ void main(void)
                 //draw func
                 held = userPlay(held);
                 //function to check if won, takes in current hand
+                state = 3;
             }
             //set states based on checked conditions. Check if bust, held, etc.
             state++;
@@ -80,16 +85,18 @@ void main(void)
             if(!cheld){
                 cheld = cPlay(cheld);
                 //function to check if won, takes in current hand
+                state = 2;
             }
             if(cheld && held == true){
-                state+= 2;//specify which state to go go, not +=2
+                state = 4;//specify which state to go go, not +=2
             }
-            state--;//needs to be an if statement too
+           // state--;//needs to be an if statement too
 
             break;
         case 4: //end game
             //end game func (display results, patronize or praise player)
             //check and display on the LEDs, and then the buzzer. Use demo code functions. setleds(0x15) lights all 4 leds. toggle to make it blink.
+
             state = 0;
             break;
 

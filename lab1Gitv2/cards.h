@@ -20,5 +20,4 @@ typedef struct Cards {
 
 card makeCard(char name, int val);
 
-
 #endif /* CARDS_H_ */

@@ -12,7 +12,7 @@
 
 
 
-void keypress(void)
+int keypress(void)
 {
     char cutvar[2];
     bool digitOne = false;

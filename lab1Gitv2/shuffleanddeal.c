@@ -29,7 +29,6 @@ card shuffle(card uDeck)
             while (sDeck[j] != 0)
             {
                 int j = rand() % CARD_COUNT;
-
             }
         }
 
@@ -48,8 +47,10 @@ char firstdeal(card sDeck, bool held)
  *      card1 = sDeck.name[card count]
  *      card2 = sDeck.name[card count + 1]
  */
+            }
+        }
 
-
+    return sDeck[52];
 }
 
 /* while !firstdeal
