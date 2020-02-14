@@ -11,6 +11,7 @@
 #include<stdlib.h>
 #include "peripherals.h"
 
+bool standoff(char uhand,char chand);
 void gameOver(bool uWon);
-
+bool bustCheck(char hand);
 #endif /* END_H_ */

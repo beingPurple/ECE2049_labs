@@ -17,7 +17,6 @@
 #include "keypress.h"
 #include "end.h"
 
-
 // Function Prototypes
 void swDelay(char numLoops);
 
@@ -27,7 +26,7 @@ int seed; //random shuffle + deal seed
 card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
-
+bool uWon = true; //default is userwins
 
 // Main
 void main(void)
@@ -41,7 +40,8 @@ void main(void)
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
     Graphics_drawStringCentered(&g_sContext, "before switch",
-                                AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
+    AUTO_STRING_LENGTH,
+                                48, 15, TRANSPARENT_TEXT);
     Graphics_flushBuffer(&g_sContext);
 
     while (1)
@@ -51,7 +51,10 @@ void main(void)
         {
         case 0: //idle case
             idle(); //idle func(pretty lights, wait for player to enter a number)
-            Graphics_drawStringCentered(&g_sContext, "after idle", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "after idle",
+            AUTO_STRING_LENGTH,
+                                        48, 15,
+                                        OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             state++;
             break;
@@ -77,26 +80,46 @@ void main(void)
                 state = 3;
             }
             //set states based on checked conditions. Check if bust, held, etc.
+
+            //check for user bust
+            if (bustCheck(char pHand))                //if player busted
+            {
+                uWon = false;                //user lost
+                state = 4;
+            }
+
             state++;
 
             break;
         case 3: //comp's turn
             //computer decision func
-            if(!cheld){
+            if (!cheld)
+            {
                 cheld = cPlay(cheld);
                 //function to check if won, takes in current hand
                 state = 2;
             }
-            if(cheld && held == true){
-                state = 4;//specify which state to go go, not +=2
+
+            // check for computer bust
+            if (bustCheck(char cHand))
+            {
+                state = 4;
             }
-           // state--;//needs to be an if statement too
+
+            if (cheld && held == true)//standoff for if both hold before busting. true is player looses
+            {
+
+                if (standoff() == true)//TODO implement user hand and player hand. They are 2d arrays.
+                {
+                    uWon = false;
+                    state = 4;
+                }
+
+            }
 
             break;
         case 4: //end game
-            //end game func (display results, patronize or praise player)
-            //check and display on the LEDs, and then the buzzer. Use demo code functions. setleds(0x15) lights all 4 leds. toggle to make it blink.
-
+            gameOver(uWon);
             state = 0;
             break;
 

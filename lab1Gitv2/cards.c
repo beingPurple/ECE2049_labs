@@ -24,7 +24,7 @@
 char genSuit(char suit)
 {
     int i;
-    char set[13][2];
+    char set[13][2];//13 rows, 2 columns
     //card c;
     for (i = 0; i < 13; i++)
     {
