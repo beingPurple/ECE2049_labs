@@ -15,6 +15,7 @@
 #include "cards.h"
 #include "keypress.h"
 #include "shuffle.h"
+#include "end.h"
 
 // Function Prototypes
 void swDelay(char numLoops);
@@ -25,6 +26,7 @@ int seed; //random shuffle + deal seed
 card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
+
 
 // Main
 void main(void)
@@ -90,6 +92,7 @@ void main(void)
         case 4: //end game
             //end game func (display results, patronize or praise player)
             //check and display on the LEDs, and then the buzzer. Use demo code functions. setleds(0x15) lights all 4 leds. toggle to make it blink.
+
             state = 0;
             break;
 
