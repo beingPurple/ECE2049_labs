@@ -45,6 +45,7 @@ void main(void)
 
     while (1)
     {
+        card sDeck;
         switch (state)
         {
         case 0: //idle case

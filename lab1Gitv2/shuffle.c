@@ -36,5 +36,5 @@ card shuffle(card uDeck)
             }
         }
 
-    return sDeck;
+    return sDeck[52];
 }

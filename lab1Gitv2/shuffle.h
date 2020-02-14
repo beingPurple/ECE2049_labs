@@ -7,6 +7,7 @@
 
 #ifndef SHUFFLE_H_
 #define SHUFFLE_H_
+#include "cards.h"
 
 card shuffle();
 
