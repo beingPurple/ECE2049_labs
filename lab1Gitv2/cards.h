@@ -16,6 +16,7 @@ typedef struct Cards {
    char name;
    char suit;
    int val;
+   char card[52];
 } card;
 
 card makeCard(char name, int val);

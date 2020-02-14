@@ -7,16 +7,19 @@
 #include "cards.h"
 
 
-card makeCard(char name, int val)
+card makeCard(char name, int val, char card)
 
 {
     card v;
     v.name = name;
     v.val = val;
+    v.card = card;
 
     return v;
 
 }
+
+makeCard(H2,2,)
 
 card genSuit(char suit)
 {

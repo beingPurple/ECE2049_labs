@@ -14,7 +14,7 @@
 #include <msp430.h>
 
 
-card shuffle(card uDeck);
+char shuffle(char uDeck);
 char firstdeal(card sDeck, bool held);
 
 
