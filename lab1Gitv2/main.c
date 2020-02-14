@@ -3,6 +3,7 @@
 /***************************************************/
 
 #include <msp430.h>
+#include <shuffleanddeal.h>
 
 /* Peripherals.c and .h are where the functions that implement
  * the LEDs and keypad, etc are. It is often useful to organize
@@ -14,7 +15,6 @@
 #include "play.h"
 #include "cards.h"
 #include "keypress.h"
-#include "shuffle.h"
 
 // Function Prototypes
 void swDelay(char numLoops);
@@ -56,7 +56,7 @@ void main(void)
             swDelay(3);
             seed = keypress();
             srand(seed);
-            sDeck = shuffle(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
+            sDeck = shuffleanddeal(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
             //shuffle and deal, etc.
             //cut func
             //shuffle and deal func

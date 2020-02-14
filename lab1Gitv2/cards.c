@@ -5,10 +5,7 @@
  *      Author: ncmorgan
  */
 #include "cards.h"
-#include <stdio.h>
-#include <string.h>
-#include <msp430.h>
-#include <stdlib.h>
+
 
 card makeCard(char name, int val)
 

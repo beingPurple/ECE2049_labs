@@ -7,6 +7,10 @@
 
 #ifndef CARDS_H_
 #define CARDS_H_
+#include <stdio.h>
+#include <string.h>
+#include <msp430.h>
+#include <stdlib.h>
 
 typedef struct Cards {
    char name;
