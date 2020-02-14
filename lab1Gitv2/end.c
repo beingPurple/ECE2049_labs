@@ -17,34 +17,49 @@ bool standoff(char uhand, char chand)
     int userHand = sizeof(uhand) / 2;
     int compHand = sizeof(chand) / 2;
     int i;
-    uhand[1][0]='K';
+   // uhand[1][0]='K';
     bool userLost = false;
+
+    int z = sizeof(uhand)/(sizeof(char)*2);
+    char uh[z][2];
+    uh[0][0]=uhand;
+
+    int zz = sizeof(chand)/(sizeof(char)*2);
+    char ch[zz][2];
+    ch[0][0]=chand;
+
     //tally user
-    for (i = 0; i < userHand; i++)
+    for (i = 0; i < z; i++)
     {
-        if (uhand[i][0] == 'K'| uhand[i][0] == 'Q' | uhand[i][0] == 'J')
+        if (uh[i][0] == 'K'| uh[i][0] == 'Q' | uh[i][0] == 'J'| uh[i][0] == 't')
         {
             uCount += 10;
         }
+        else if(uh[i][0] == 'A'){
+            uCount += 1;
+        }
         else
         {
-
+            uCount += uh[i][0];
         }
-        uCount += (int) uhand[i][0];
+        uCount += (int) uh[i][0];
     }
     i = 0;
     //tally computer
-    for (i = 0; i < compHand; i++)
+    for (i = 0; i < zz; i++)
     {
-        if (chand[i][0] == 'K' | chand[i][0] == 'Q' | chand[i][0] == 'J')
+        if (ch[i][0] == 'K' | ch[i][0] == 'Q' | ch[i][0] == 'J'| ch[i][0] == 'y')
         {
             cCount += 10;
         }
+        else if(ch[i][0] == 'A'){
+                   cCount += 1;
+               }
         else
         {
-
+            cCount += ch[i][0];
         }
-        uCount += (int) uhand[i][0];
+        cCount += (int) ch[i][0];
     }
     if (uCount > cCount)
     {
@@ -63,11 +78,13 @@ bool bustCheck(char hand)
     int cardsNhand = sizeof(hand) / 2;
     int sum = 0;
     int i;
+    char h[2][2];
+    h[0][0] = hand;
 
     //iterate through each column
     for (i = 0; i < cardsNhand; i++)
     {
-        sum = (int) hand[i][0];
+        sum = (int) h[i][0];
     }
     if (sum > 20)
     {

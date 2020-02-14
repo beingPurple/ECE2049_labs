@@ -51,39 +51,32 @@ char shuffle()
 char firstdeal(char sDeck, char hand, int cardcounter)
 {
     int m;
+    char h[2][2];
+    char deck[52][2];
+    deck[0][0] = sDeck;
+    h[0][0]=hand;
 
     for(m=cardcounter;m<cardcounter + 2;m++)
     {
-        hand[m][0] = sDeck[m][0];
+        h[m][0] = deck[m][0];
     }
 
     cardcounter = m;
-    return hand;
+    return h;
 }
 
 char deal(char sDeck, char hand, int cardcounter)
 {
-
+    int z = sizeof(hand)/(sizeof(char)*2);
+    char h[z][2];
+    char deck[52][2];
+    deck[0][0] = sDeck;
+    h[0][0]=hand;
     int n = cardcounter;
-    hand[n][0] = sDeck[n][0];
+    h[n][0] = deck[n][0];
 
 
     cardcounter +=1;
-    return hand;
+    return h;
 }
-/* while first deal
- *      increment card count by 2
- *    for card count in sDeck
- *      card1 = sDeck.name[card count]
- *      card2 = sDeck.name[card count + 1]
- */
 
-
-
-/* while !firstdeal
- * increment card count by 1
- *
- * for card count in sDeck
- *
- * card1 = sDeck.name[card count]
- */

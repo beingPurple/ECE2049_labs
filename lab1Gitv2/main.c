@@ -66,6 +66,7 @@ void main(void)
             swDelay(3);
             seed = keypress();
             srand(seed);
+
             //sDeck = shuffleanddeal(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
             //shuffle and deal, etc.
             //cut func
