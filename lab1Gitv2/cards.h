@@ -11,14 +11,15 @@
 #include <string.h>
 #include <msp430.h>
 #include <stdlib.h>
-
-typedef struct Cards {
-   char name;
-   char suit;
-   int val;
-   char card[52];
-} card;
-
-card makeCard(char name, int val);
+//
+//typedef struct Cards {
+//   char name;
+//   char suit;
+//   int val;
+//   char card[52];
+//} card;
+//
+//char makeCard(char name, int val);
+char genSuit(char suit);
 
 #endif /* CARDS_H_ */
