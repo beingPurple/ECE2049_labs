@@ -7,9 +7,10 @@
 #include "cards.h"
 #include <stdio.h>
 #include <string.h>
+#include <msp430.h>
+#include <stdlib.h>
 
-
-card makeCard(char name[2],int val)
+card makeCard(char name[2], int val)
 
 {
     card v;
@@ -34,7 +35,7 @@ card genDeck()
 card genh(char suit)
 {
     int i;
-    std::string;
+    std::string in;
     for (i = 0; i < 13; i++)
     {
         if (i == 0)
