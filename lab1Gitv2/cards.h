@@ -9,11 +9,12 @@
 #define CARDS_H_
 
 typedef struct Cards {
-   char name[2];
+   char name;
+   char suit;
    int val;
 } card;
 
-card makeCard(char name[2],int val);
+card makeCard(char name, int val);
 
 
 #endif /* CARDS_H_ */

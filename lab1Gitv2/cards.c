@@ -10,63 +10,54 @@
 #include <msp430.h>
 #include <stdlib.h>
 
-card makeCard(char name[2], int val)
+card makeCard(char name, int val)
 
 {
     card v;
-    strcpy(v.name, name[2]);
+    v.name = name;
     v.val = val;
 
     return v;
 
 }
-card genDeck()
-{
-    card newDeck[52];
 
-    newDeck[0] = makeCard("A♥", 1);
-    newDeck[1] = makeCard("2♥", 2);
-    newDeck[2] = makeCard("3♥", 3);
-    newDeck[3] = makeCard("4♥", 4);
-
-    return newDeck[52];
-}
-
-card genh(char suit)
+card genSuit(char suit)
 {
     int i;
-    std::string in;
+    card c;
     for (i = 0; i < 13; i++)
     {
+        char in[2];
+        in[1] = suit;
         if (i == 0)
         {
-            in =
-            {   "A", suit};
-            makeCard(in, i + 1);
+            in[0] = 'A';
+            makeCard(in, 11);
         }
         else if (i < 0 && i < 10)
         {
-        makeCard(
-                {   (i + 1) , suit}, i + 1);
-    }
-    else
-    {
-        if (i == 10)
+            in[0] = i + 1;
+            makeCard(in, i + 1);
+        }
+        else
         {
-        makeCard(
-                {   "K" , suit}, 10);
+            if (i == 10)
+            {
+                in[0] = 'K';
+                makeCard(in, 10);
+            }
+            else if (i == 11)
+            {
+                in[0] = 'Q';
+                makeCard(in, 10);
+            }
+            else if (i == 12)
+            {
+                in[0] = 'J';
+                makeCard(in, 10);
+            }
+        }
     }
-    else if (i == 11)
-    {
-    makeCard(
-            {   "Q" , suit}, 10);
-}
-else if (i == 12)
-{
-makeCard(
-        {   "J" , suit}, 10);
-}
-}
-}
+    return c;
 }
 
