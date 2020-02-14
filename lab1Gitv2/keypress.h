@@ -8,6 +8,6 @@
 #ifndef KEYPRESS_H_
 #define KEYPRESS_H_
 
-void keypress(void);
+int keypress(void);
 
 #endif /* KEYPRESS_H_ */

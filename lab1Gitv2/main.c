@@ -72,6 +72,7 @@ void main(void)
                 //draw func
                 held = userPlay(held);
                 //function to check if won, takes in current hand
+                state = 3;
             }
             //set states based on checked conditions. Check if bust, held, etc.
             state++;
@@ -82,11 +83,12 @@ void main(void)
             if(!cheld){
                 cheld = cPlay(cheld);
                 //function to check if won, takes in current hand
+                state = 2;
             }
             if(cheld && held == true){
-                state+= 2;//specify which state to go go, not +=2
+                state = 4;//specify which state to go go, not +=2
             }
-            state--;//needs to be an if statement too
+           // state--;//needs to be an if statement too
 
             break;
         case 4: //end game

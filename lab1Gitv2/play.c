@@ -39,7 +39,8 @@ bool userPlay(bool held)
             AUTO_STRING_LENGTH,
                                         48, 15, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
-            //add the next card to user's hand. Will depend on the output of shuffle
+            //Deal function, as per shruti
+            //calculate if bust
         }
         else
         { //invalid entry
