@@ -35,9 +35,13 @@ char genSuit(char suit)
             in[0] = 'A';
 
         }
-        else if (i < 0 && i < 10)
+        else if (i > 0 && i < 9)
         {
             in[0] = i + 1;
+        }
+        else if (i == 9)
+        {
+            in[0] = 't';
         }
         else
         {

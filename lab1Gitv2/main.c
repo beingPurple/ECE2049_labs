@@ -27,8 +27,9 @@ int seed; //random shuffle + deal seed
 bool held = false; //tracks if player has held or not
 bool cheld = false;
 bool uWon = true; //default is userwins
-char uhand[11][2] = { '0' };
-char chand[11][2] = { '0' };
+char uhand[11][2] = '0';
+char chand[11][2] = '0';
+int cardcounter = 0;
 
 // Main
 void main(void)

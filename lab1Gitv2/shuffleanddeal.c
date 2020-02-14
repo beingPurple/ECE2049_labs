@@ -13,49 +13,67 @@
 #define CARD_COUNT 52
 
 int size = CARD_COUNT;
-char uDeck[109] = {"HA", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "HJ", "HQ", "HK", "DA", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10",
-    "DJ", "DQ", "DK", "CA", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10", "CJ", "CQ", "CK", "SA", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9",
-    "S10", "SJ", "SQ", "SK"};
 
-char shuffle(char uDeck)
+
+char shuffle()
 {
+    char deck[52][2];
+    deck[0][0] = genSuit('♥');
+    deck[13][0] = genSuit('S');
+    deck[26][0]= genSuit('D');
+    deck[39][0]= genSuit('C');
 
     int i;
 
-    const char* sDeck[52] = {0};
+    char sDeck[52][2];
+    sDeck[52][0] = '0';
     int j = rand() % CARD_COUNT;
 
         //step through each index of the city name array
         for (i = 0; i < size - 1; i++)
         {
-            if (sDeck[j] != 0)
+            while (sDeck[j][0] != 0)
             {
                int j = rand() % CARD_COUNT;
             }
 
-            sDeck[j] = uDeck[i];
+            sDeck[j][0] = deck[i][0];
+
         }
 
     return sDeck;
 }
 
-char firstdeal(card sDeck bool held)
+char firstdeal(char sDeck, char hand, int cardcounter)
 {
     int k;
-    char card1[2];
-    char card2[2];
 
+    for(k=cardcounter;k<cardcounter + 2;k++)
+    {
+        hand[k][0] = sDeck[k][0];
+    }
+
+    cardcounter = k + 1;
+    return hand;
+}
+
+char deal(char sDeck, char hand, int cardcounter)
+{
+    int k = sizeof(hand[13][0])/sizeof(char);
+    hand[k][0] = sDeck[k][0];
+
+
+    cardcounter +=1;
+    return hand;
+}
 /* while first deal
  *      increment card count by 2
  *    for card count in sDeck
  *      card1 = sDeck.name[card count]
  *      card2 = sDeck.name[card count + 1]
  */
-            }
-        }
 
-    return sDeck[52];
-}
+
 
 /* while !firstdeal
  * increment card count by 1
