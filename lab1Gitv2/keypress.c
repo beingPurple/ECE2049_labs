@@ -5,12 +5,7 @@
  *      Author: sbhatia
  */
 
-#include <keypress.h>
-#include <string.h>
-#include <msp430.h>
-#include "peripherals.h"
-
-
+#include "keypress.h"
 
 int keypress(void)
 {

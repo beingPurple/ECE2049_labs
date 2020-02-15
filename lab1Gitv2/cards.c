@@ -6,26 +6,9 @@
  */
 #include "cards.h"
 
-
-//card makeCard(char name, int val, char card)
-//
-//{
-//    card v;
-//    v.name = name;
-//    v.val = val;
-//    v.card = card;
-//
-//    return v;
-//
-//}
-
-//makeCard(H2,2,)
-
-char genSuit(char suit)
+char genSuit(char suit, char set[13][2])
 {
     int i;
-    char set[13][2];//13 rows, 2 columns
-    //card c;
     for (i = 0; i < 13; i++)
     {
         char in[2];
@@ -60,6 +43,5 @@ char genSuit(char suit)
         }
         set[i][0] = in[0];
     }
-    return set;
 }
 

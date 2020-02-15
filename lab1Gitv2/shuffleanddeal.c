@@ -7,24 +7,20 @@
  */
 
 
-#include <shuffleanddeal.h>
-
-
+#include "shuffleanddeal.h"
 #define CARD_COUNT 52
 
-int size = CARD_COUNT;
-
-
-char shuffle()
+void shuffle(char sDeck[52][2], char set[13][2])
 {
+    int size = CARD_COUNT;
     char deck[52][2];
-    deck[0][0] = genSuit('♥');
-    deck[13][0] = genSuit('S');
-    deck[26][0]= genSuit('D');
-    deck[39][0]= genSuit('C');
+    deck[0][0] = genSuit('♥',set[13][2]);
+    deck[13][0] = genSuit('S',set[13][2]);
+    deck[26][0]= genSuit('D',set[13][2]);
+    deck[39][0]= genSuit('C',set[13][2]);
 
     int i;
-    char sDeck[52][2];
+    //char sDeck[52][2];
     int j = rand() % CARD_COUNT;
     int k;
 
@@ -40,21 +36,14 @@ char shuffle()
             {
                int j = rand() % CARD_COUNT;
             }
-
             sDeck[j][0] = deck[i][0];
 
         }
-
-    return sDeck[52][2];
 }
 
-char firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter)
+void firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter)
 {
     int m;
-    //char h[2][2];
-    //char deck[52][2];
-    //deck[0][0] = sDeck;
-    //h[0][0]=hand;
 
     for(m=cardcounter;m<cardcounter + 2;m++)
     {
@@ -62,21 +51,13 @@ char firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter)
     }
 
     cardcounter = m;
-    return hand[11][2];
 }
 
-char deal(char sDeck[52][2], char hand[11][2], int cardcounter)
+void deal(char sDeck[52][2], char hand[11][2], int cardcounter)
 {
-    //int z = sizeof(hand)/(sizeof(char)*2);
-    //char h[z][2];
-    //char deck[52][2];
-    //deck[0][0] = sDeck;
-    //h[0][0]=hand;
     int n = cardcounter;
+
     hand[n][0] = sDeck[n][0];
-
-
     cardcounter +=1;
-    return hand[11][2];
 }
 

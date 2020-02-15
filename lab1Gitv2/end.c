@@ -7,7 +7,7 @@
 #include "end.h"
 #include <msp430.h>
 #include <stdint.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include "peripherals.h"
 
 bool standoff(char uhand, char chand)

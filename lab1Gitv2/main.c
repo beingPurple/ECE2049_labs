@@ -2,35 +2,20 @@
 /**************  13 March 2019   ******************/
 /***************************************************/
 
-#include <msp430.h>
-#include <shuffleanddeal.h>
 
-/* Peripherals.c and .h are where the functions that implement
- * the LEDs and keypad, etc are. It is often useful to organize
- * your code by putting like functions together in files.
- * You include the header associated with that file(s)
- * into the main file of your project. */
-#include "peripherals.h"
-#include "idle.h"
-#include "play.h"
-#include "cards.h"
-#include "keypress.h"
-#include "end.h"
-
-// Function Prototypes
-void swDelay(char numLoops);
+#include "main.h"
 
 // Declare globals here
 int state = 0; //state tracker
 int seed; //random shuffle + deal seed
-//card uDeck[52];
 bool held = false; //tracks if player has held or not
 bool cheld = false;
 bool uWon = true; //default is userwins
 char uhand[11][2];
 char chand[11][2];
 int cardcounter = 0;
-
+char sDeck[52][2];
+char set[13][2];//13 rows, 2 columns
 // Main
 void main(void)
 
@@ -41,12 +26,6 @@ void main(void)
     configDisplay();
     configKeypad();
 
-    Graphics_clearDisplay(&g_sContext); // Clear the display
-    Graphics_drawStringCentered(&g_sContext, "before switch",
-    AUTO_STRING_LENGTH,
-                                48, 15, TRANSPARENT_TEXT);
-    Graphics_flushBuffer(&g_sContext);
-
     while (1)
     {
 
@@ -54,10 +33,7 @@ void main(void)
         {
         case 0: //idle case
             idle(); //idle func(pretty lights, wait for player to enter a number)
-            Graphics_drawStringCentered(&g_sContext, "after idle",
-            AUTO_STRING_LENGTH,
-                                        48, 15,
-                                        OPAQUE_TEXT);
+            Graphics_drawStringCentered(&g_sContext, "after idle", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
             Graphics_flushBuffer(&g_sContext);
             state++;
             break;
@@ -66,8 +42,11 @@ void main(void)
             swDelay(3);
             seed = keypress();
             srand(seed);
+            char seed = seed;
+            Graphics_clearDisplay(&g_sContext); // Clear the display
+            Graphics_drawStringCentered(&g_sContext, seed , AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
+            Graphics_flushBuffer(&g_sContext);
 
-            //sDeck = shuffleanddeal(uDeck); //shuffle the real deck by passing in realDeck and reassigning its values
             //shuffle and deal, etc.
             //cut func
             //shuffle and deal func

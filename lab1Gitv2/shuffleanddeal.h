@@ -14,9 +14,9 @@
 #include <msp430.h>
 
 
-char shuffle();
-char firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter);
-char deal(char sDeck[52][2], char hand[11][2], int cardcounter);
+void shuffle(char sDeck[52][2], char set [13][2]);
+void firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter);
+void deal(char sDeck[52][2], char hand[11][2], int cardcounter);
 
 
 

@@ -12,14 +12,7 @@
 #include <msp430.h>
 #include <stdlib.h>
 //
-//typedef struct Cards {
-//   char name;
-//   char suit;
-//   int val;
-//   char card[52];
-//} card;
-//
-//char makeCard(char name, int val);
-char genSuit(char suit);
+
+char genSuit(char suit, char set[13][2]);
 
 #endif /* CARDS_H_ */
