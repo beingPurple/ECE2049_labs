@@ -15,8 +15,8 @@
 
 
 char shuffle();
-char firstdeal(char sDeck, char hand, int cardcounter);
-char deal(char sDeck, char hand, int cardcounter);
+char firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter);
+char deal(char sDeck[52][2], char hand[11][2], int cardcounter);
 
 
 

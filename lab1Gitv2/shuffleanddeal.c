@@ -45,38 +45,38 @@ char shuffle()
 
         }
 
-    return sDeck;
+    return sDeck[52][2];
 }
 
-char firstdeal(char sDeck, char hand, int cardcounter)
+char firstdeal(char sDeck[52][2], char hand[11][2], int cardcounter)
 {
     int m;
-    char h[2][2];
-    char deck[52][2];
-    deck[0][0] = sDeck;
-    h[0][0]=hand;
+    //char h[2][2];
+    //char deck[52][2];
+    //deck[0][0] = sDeck;
+    //h[0][0]=hand;
 
     for(m=cardcounter;m<cardcounter + 2;m++)
     {
-        h[m][0] = deck[m][0];
+        hand[m][0] = sDeck[m][0];
     }
 
     cardcounter = m;
-    return h;
+    return hand[11][2];
 }
 
-char deal(char sDeck, char hand, int cardcounter)
+char deal(char sDeck[52][2], char hand[11][2], int cardcounter)
 {
-    int z = sizeof(hand)/(sizeof(char)*2);
-    char h[z][2];
-    char deck[52][2];
-    deck[0][0] = sDeck;
-    h[0][0]=hand;
+    //int z = sizeof(hand)/(sizeof(char)*2);
+    //char h[z][2];
+    //char deck[52][2];
+    //deck[0][0] = sDeck;
+    //h[0][0]=hand;
     int n = cardcounter;
-    h[n][0] = deck[n][0];
+    hand[n][0] = sDeck[n][0];
 
 
     cardcounter +=1;
-    return h;
+    return hand[11][2];
 }
 
