@@ -107,7 +107,7 @@ void gameOver(bool uWon)
 //do this a number of ticks delays
         for (i = 0; i < REPEATLENGTH; i++)
         {
-            setleds(~l);
+            setLeds(~l);
             Graphics_drawStringCentered(&g_sContext, "Congrats!",
             AUTO_STRING_LENGTH,
                                         48, 15,
@@ -125,7 +125,7 @@ void gameOver(bool uWon)
 
         for (i = 0; i < REPEATLENGTH; i++)
         {
-            setleds(~l);
+            setLeds(~l);
             Graphics_drawStringCentered(&g_sContext, "Sucks to suck!",
             AUTO_STRING_LENGTH,
                                         48, 15,
