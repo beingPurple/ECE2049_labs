@@ -11,7 +11,7 @@
 
 #include <msp430.h>
 #include <stdint.h>
-#include "grlib/grlib.h"
+#include "grlib.h"
 
 #include "LcdDriver/Sharp96x96.h"
 #include "LcdDriver/HAL_MSP_EXP430FR5529_Sharp96x96.h"
@@ -70,10 +70,14 @@ void initLeds(void);
 void setLeds(unsigned char state);
 
 void configDisplay(void);
-void BuzzerOn(int n);
+void BuzzerOn(int freq);
 void BuzzerOff(void);
 
 void configKeypad(void);
 unsigned char getKey(void);
+
+void configButtons(void);
+char stateButtons(void);
+void configUserLED(char inbits);
 
 #endif /* PERIPHERALS_H_ */

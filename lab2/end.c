@@ -17,7 +17,7 @@ void gameOver(bool uWon)
     int i;
     const int REPEATLENGTH = 20;
     Graphics_clearDisplay(&g_sContext); // Clear the display
-    BuzzerOn();
+    BuzzerOn(188);
     if (uWon)
     {
         int l = 0x15;

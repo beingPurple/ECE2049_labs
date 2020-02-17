@@ -10,6 +10,8 @@
 
 void buttConfig();
 int buttState();
+char intToChar(int led);
+void buzzPlay();
 
 
 #endif /* BUTT_H_ */

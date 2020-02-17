@@ -40,28 +40,43 @@ int main(void)
     initLeds();
     configDisplay();
     configKeypad();
-    void buttConfig();
+    buttConfig();
+    //__enable_interrupt();
+    _BIS_SR(GIE);
+
+    int preval = 0;
+    bool change = false;
+
 
     bool uWon = false;
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
+    while(1){
+        runtimerA2();
 
-    //idle display
-    //idle();
-
-    //configure timers and background stuff
-
-    //countdown
-
-    //play game
-    //FOR NOW: button lightup
-    while (1)
+    if (change)
     {
         setLeds(buttState());
-
-        Graphics_drawStringCentered(&g_sContext, buttState(), AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
-        Graphics_flushBuffer(&g_sContext);
+        buzzPlay();
+        swDelay(2);
+        change = false;
     }
+    preval = buttState();
+    }
+
+//do nothing routine
+    ///if bottonpress is different from what it was last time, sound an interupt which sets something to true
+    //the thing in the true loop happens, turns itself off, and back to idle
+
+//    while (1)
+//    {
+//        setLeds(buttState());
+//        buzzPlay();
+//        swDelay(2);
+////        Graphics_drawStringCentered(&g_sContext, intToChar(buttState()), AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
+////        Graphics_flushBuffer(&g_sContext);
+//        // setLeds(0);
+//    }
 
     //celebrate or humiliate
     //gameOver(uWon);

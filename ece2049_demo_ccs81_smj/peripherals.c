@@ -34,6 +34,15 @@ void initLeds(void)
     P6SEL &= ~(BIT4|BIT3|BIT2|BIT1);
     P6DIR |=  (BIT4|BIT3|BIT2|BIT1);
     P6OUT &= ~(BIT4|BIT3|BIT2|BIT1);
+
+    // LEDs on LaunchPad
+    P1SEL &= ~(BIT0);
+    P1DIR |= (BIT0);
+    P1OUT &= ~(BIT0);
+
+    P4SEL &= ~(BIT7);
+    P4DIR |= (BIT7);
+    P4OUT &= ~(BIT7);
 }
 
 void setLeds(unsigned char state)
@@ -71,7 +80,7 @@ void setLeds(unsigned char state)
  * Enable a PWM-controlled buzzer on P3.5
  * This function makes use of TimerB0.
  */
-void BuzzerOn(int pitch)
+void BuzzerOn(int freq)
 {
     // Initialize PWM output on P3.5, which corresponds to TB0.5
     P3SEL |= BIT5; // Select peripheral output mode for P3.5
@@ -83,7 +92,12 @@ void BuzzerOn(int pitch)
     // Now configure the timer period, which controls the PWM period
     // Doing this with a hard coded values is NOT the best method
     // We do it here only as an example. You will fix this in Lab 2.
-    TB0CCR0   = pitch;                    // Set the PWM period in ACLK ticks
+    if(freq == 0){
+        TB0CCR0 = 0;
+    }
+    else{
+        TB0CCR0   = 32768/freq;                    // We get the frequency of the note we want
+    }
     TB0CCTL0 &= ~CCIE;                  // Disable timer interrupts
 
     // Configure CC register 5, which is connected to our PWM pin TB0.5
@@ -212,6 +226,81 @@ void configDisplay(void)
     Graphics_flushBuffer(&g_sContext);
 }
 
+// TODO: Fix Button Config For User Buttons
+void configButtons() {
+
+    // S1 corresponds to P7.0; S4 corresponds to P7.4
+    P7SEL &= ~(BIT4|BIT0); // xxx0 xxx0
+    P7DIR &= ~(BIT4|BIT0); // xxx0 xxx0
+    P7REN |= (BIT4|BIT0);  // xxx1 xxx1
+    P7OUT |= (BIT4|BIT0);  // xxx1 xxx1
+
+    // S2 corresponds to P3.6
+    P3SEL &= ~(BIT6); // x0xx xxxx
+    P3DIR &= ~(BIT6); // x0xx xxxx
+    P3REN |= (BIT6);  // x1xx xxxx
+    P3OUT |= (BIT6);  // x1xx xxxx
+
+    // S3 corresponds to P2.2
+    P2SEL &= ~(BIT2); // xxxx x0xx
+    P2DIR &= ~(BIT2); // xxxx x0xx
+    P2REN |= (BIT2);  // xxxx x1xx
+    P2OUT |= (BIT2);  // xxxx x1xx
+
+}
+
+char stateButtons() {
+    char state = 0x00; // it usually would return as zero unless something is on
+
+    if (~P7IN & BIT4) {
+        state |= BIT3;
+    }
+
+    if (~P3IN & BIT6) {
+        state |= BIT1;
+    }
+
+    if (~P2IN & BIT2) {
+        state |= BIT2;
+    }
+
+    if (~P7IN & BIT0) {
+        state |= BIT0;
+    }
+
+    return state;
+
+}
+
+// TODO: Change for user boards
+void configUserLED(char inbits) {
+
+    /*
+    //LED 1 - 1.0; LED 2 - 4.7
+    if (inbits >> 2) {
+        P4OUT &= ~(BIT7);
+        P1OUT &= ~(BIT0);
+    }
+    else if (inbits >> 1) {
+        P4OUT &= (BIT7);
+        P1OUT &= ~(BIT0);
+    }
+    else if (inbits) {
+        P4OUT &= ~(BIT7);
+        P1OUT &= (BIT0);
+    }
+    else {
+        P4OUT &= (BIT7);
+        P1OUT &= (BIT0);
+    }
+*/
+
+
+
+
+
+
+}
 /*
 void setupSPI_DAC(void)
 {
