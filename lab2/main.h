@@ -15,7 +15,6 @@ bool uWon;
 void swDelay(char numLoops);
 int preval;
 bool change;
-long unsigned int timer_cnt=0;
-char tdir = 1;
+int state;
 
 #endif /* MAIN_H_ */

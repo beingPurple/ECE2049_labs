@@ -21,15 +21,19 @@ void buttConfig()
     //select for io (0 is io) and direction (0 IS INPUT)
     P7SEL &= ~(BIT0 | BIT4);
     P7DIR &= ~(BIT0 | BIT4);
+    P7OUT |= (BIT0 | BIT4);
     P3SEL &= ~(BIT6);
     P3DIR &= ~(BIT6);
+    P3OUT |= BIT6;
     P2SEL &= ~(BIT2);
     P2DIR &= ~(BIT2);
+    P2OUT |= BIT2;
 
     //pull it all up (1 is pullup)
     P7REN |= (BIT0 | BIT4);
-    P3REN |= (BIT6);
-    P2REN |= (BIT2);
+    P3REN |= BIT6;
+    P2REN |= BIT2;
+
 }
 
 /*3)  Write  a  function  that  returns  the  state  of  the  lab
@@ -67,7 +71,7 @@ char intToChar(int led)
 int buttState()
 {
     //remember, we are looking for ZEROES as pressed buttons!
-    int state = 0x00; //fill with ones
+    int state = 0; //fill with ones
     //setLeds(0);
 
     if (~P7IN & (BIT4))
@@ -84,19 +88,48 @@ int buttState()
     }
     if (~P7IN & BIT0)
     {
-
         state |= BIT3;
     }
     return state;
 }
 
-void buzzPlay(){
+void configUserLED()
+{
+    //select
+    P4SEL &= ~BIT7;
+    P1SEL &= ~BIT0;
+    //output
+    P4DIR |= BIT7;
+    P1DIR |= BIT0;
+}
+
+void lightUserLED(char in)
+{
+    P1OUT &= ~BIT0;
+    P4OUT &= ~BIT7;
+    int state = 0;
+    if (in & BIT0)
+    {
+        P4OUT |= BIT7;
+
+    }
+    if (in & BIT1)
+    {
+        P1OUT |= BIT0;
+    }
+
+}
+
+void buzzPlay()
+{
     int buzzNum = buttState();
-    if(buzzNum == 0){
+    if (buzzNum == 0)
+    {
         BuzzerOff();
     }
-    else{
-        BuzzerOn(buzzNum);
+    else
+    {
+        BuzzerOn(10 * buzzNum);
     }
 }
 

@@ -41,56 +41,40 @@ int main(void)
     configDisplay();
     configKeypad();
     buttConfig();
-    //__enable_interrupt();
-    _BIS_SR(GIE);
-
-    int preval = 0;
-    bool change = false;
-
+    configUserLED();
+    state = 1;
 
     bool uWon = false;
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
-    while(1){
-        runtimerA2();
 
-    if (change)
+    //goes here if # is pressed
+
+    while (1)
     {
-        setLeds(buttState());
-        buzzPlay();
-        swDelay(2);
-        change = false;
+        switch (state)
+        {
+        case 1:
+            idle();
+            break;
+        case 2:
+            lightUserLED(buttState());
+            setLeds(buttState());
+            break;
+        }
     }
-    preval = buttState();
-    }
 
-//do nothing routine
-    ///if bottonpress is different from what it was last time, sound an interupt which sets something to true
-    //the thing in the true loop happens, turns itself off, and back to idle
-
-//    while (1)
-//    {
-//        setLeds(buttState());
-//        buzzPlay();
-//        swDelay(2);
-////        Graphics_drawStringCentered(&g_sContext, intToChar(buttState()), AUTO_STRING_LENGTH, 48, 15, TRANSPARENT_TEXT);
-////        Graphics_flushBuffer(&g_sContext);
-//        // setLeds(0);
-//    }
-
-    //celebrate or humiliate
-    //gameOver(uWon);
 }
 
 void swDelay(char numLoops)
 {
-    // This function is a software delay. It performs
-    // useless loops to waste a bit of time
-    //
-    // Input: numLoops = number of delay loops to execute
-    // Output: none
-    //
-    // smj, ECE2049, 25 Aug 2013
+// This function is a software delay. It performs
+// useless loops to waste a bit of time
+//
+// Input: numLoops = number of delay loops to execute
+// Output: none
+//
+// smj, ECE2049, 25 Aug 2013
 
     volatile unsigned int i, j;  // volatile to prevent removal in optimization
                                  // by compiler. Functionally this is useless code
