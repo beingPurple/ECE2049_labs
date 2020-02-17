@@ -14,8 +14,8 @@ bool standoff(char uhand, char chand)
 { //standoff for if both hold before busting. true is player looses
     int uCount;
     int cCount;
-    int userHand = sizeof(uhand) / 2;
-    int compHand = sizeof(chand) / 2;
+    int userHand = sizeof(uhand) / (2*sizeof(char));
+    int compHand = sizeof(chand) / (2*sizeof(char));
     int i;
    // uhand[1][0]='K';
     bool userLost = false;
