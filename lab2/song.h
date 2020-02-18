@@ -9,7 +9,7 @@
 #define SONG_H_
 
 void countdown();
-
+void blindMice();
 
 
 #endif /* SONG_H_ */

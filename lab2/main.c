@@ -48,7 +48,7 @@ int main(void)
     state = 1;
     tc = 0;
 
-    bool uWon = false;
+    bool uWon = true;
     //__enable_interrupt();
     _BIS_SR(GIE);
     timer_cnt = 0;
@@ -82,6 +82,11 @@ int main(void)
             break;
         case 3:
             countdown();
+            //blindMice();
+            state = 4;
+            break;
+        case 4:
+            gameOver(uWon);
             state = 2;
             break;
 

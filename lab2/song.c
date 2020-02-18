@@ -38,3 +38,7 @@ void countdown()
 
 }
 
+void blindMice(){
+
+}
+

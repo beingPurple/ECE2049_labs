@@ -13,14 +13,14 @@
 
 void gameOver(bool uWon)
 { //true = user won
-    int l = 0x15;
+    int l = 0x00;
     int i;
-    const int REPEATLENGTH = 20;
+    const int REPEATLENGTH = 2;
     Graphics_clearDisplay(&g_sContext); // Clear the display
     BuzzerOn(188);
     if (uWon)
     {
-        int l = 0x15;
+        //int l = 0x0F;
         int i;
 //do this a number of ticks delays
         for (i = 0; i < REPEATLENGTH; i++)
@@ -55,5 +55,7 @@ void gameOver(bool uWon)
             swDelay(2);
         }
     }
+    Graphics_clearDisplay(&g_sContext); // Clear the display
+
 }
 
