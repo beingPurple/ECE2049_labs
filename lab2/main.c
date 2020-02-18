@@ -6,10 +6,12 @@
 #include "timer.h"
 #include "butt.h"
 #include  "stdbool.h"
+#include "song.h"
 
 /**
  * main.c
  */
+
 
 /*
  * RUBRIC CHECKLIST
@@ -42,9 +44,15 @@ int main(void)
     configKeypad();
     buttConfig();
     configUserLED();
+    runtimerA2();
+
     state = 1;
 
     bool uWon = false;
+    //__enable_interrupt();
+     _BIS_SR(GIE);
+    timer_cnt=0;
+     tdir=1;
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
 
@@ -60,6 +68,13 @@ int main(void)
         case 2:
             lightUserLED(buttState());
             setLeds(buttState());
+            if(buttState() == 0x01){
+                BuzzerOn(440);
+            }
+            else{
+                BuzzerOff();
+            }
+           // runtimerA2();
             break;
         }
     }

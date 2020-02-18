@@ -16,5 +16,7 @@ void swDelay(char numLoops);
 int preval;
 bool change;
 int state;
+long unsigned int timer_cnt;
+char tdir;
 
 #endif /* MAIN_H_ */
