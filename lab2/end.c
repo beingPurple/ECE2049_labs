@@ -55,6 +55,7 @@ void gameOver(bool uWon)
             swDelay(2);
         }
     }
+    setLeds(0);
     Graphics_clearDisplay(&g_sContext); // Clear the display
 
 }

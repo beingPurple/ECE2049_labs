@@ -54,7 +54,7 @@ __interrupt void TimerA2_ISR(void)
         timer_cnt++;
         if (timer_cnt == 60000)
             timer_cnt = 0;
-        if (timer_cnt % 100 == 0) // blink LEDs once a second
+        if (timer_cnt % 50 == 0) // blink LEDs once a second
         {
             P1OUT = P1OUT ^ BIT0;
             P4OUT ^= BIT7;

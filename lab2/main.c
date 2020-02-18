@@ -57,7 +57,7 @@ int main(void)
     Graphics_clearDisplay(&g_sContext); // Clear the display
 
     //goes here if # is pressed
-
+    unsigned char currKey = 0;
     while (1)
     {
         switch (state)
@@ -66,7 +66,7 @@ int main(void)
             idle();
             state = 3;
             break;
-        case 2://a debug state, mostly
+        case 2: //a debug state, mostly
             lightUserLED(buttState());
             setLeds(buttState());
             if (buttState() == 0x01)
@@ -83,13 +83,50 @@ int main(void)
         case 3:
             countdown();
             //blindMice();
+            int currtime = timer_cnt;
+            int i;
+            int el = timer_cnt - currtime;
+            bool reset = false;
+
+            tc = 0;
+
+            while ((tc < 4) && (reset == false))
+            {
+                currKey = getKey();
+                if (currKey == '#')
+                {
+                    state = 5;
+                    reset = true;
+                }
+                switch (tc)
+                {
+                case 0:
+                    //play note, check for time
+                    BuzzerOn(note2tune('E'));
+
+                    break;
+                case 1:
+                    BuzzerOn(note2tune('D'));
+                    break;
+                case 2:
+                    BuzzerOn(note2tune('C'));
+                    break;
+                }
+
+            }
+            BuzzerOff();
+            uWon = true;
             state = 4;
             break;
         case 4:
             gameOver(uWon);
-            state = 2;
+            state = 5;
             break;
-
+        case 5:
+            replay();
+            uWon = false;
+            state = 3;
+            break;
         }
     }
 
