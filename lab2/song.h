@@ -10,6 +10,7 @@
 
 void countdown();
 void blindMice();
-
+bool playSong(char note);
+int note2tune(char note);
 
 #endif /* SONG_H_ */

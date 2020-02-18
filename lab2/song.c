@@ -39,6 +39,99 @@ void countdown()
 
 }
 
+bool playSong(char note)
+{
+    bool missed = false;
+    switch (note)
+    {
+    case 'A':
+        BuzzerOn(440);
+        Graphics_drawStringCentered(&g_sContext, "S1",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 8)
+        {
+            missed = true;
+        }
+        break;
+    case 'B':
+        BuzzerOn(494);
+        Graphics_drawStringCentered(&g_sContext, "S2",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 4)
+        {
+            missed = true;
+        }
+        break;
+    case 'C':
+        BuzzerOn(523);
+        Graphics_drawStringCentered(&g_sContext, "S3",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 2)
+        {
+            missed = true;
+        }
+        break;
+    case 'D':
+        BuzzerOn(587);
+        Graphics_drawStringCentered(&g_sContext, "S4",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 1)
+        {
+            missed = true;
+        }
+        break;
+    case 'E':
+        BuzzerOn(659);
+        Graphics_drawStringCentered(&g_sContext, "S1",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 8)
+        {
+            missed = true;
+        }
+        break;
+    case 'F':
+        BuzzerOn(698);
+        Graphics_drawStringCentered(&g_sContext, "S2",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 4)
+        {
+            missed = true;
+        }
+        break;
+    case 'G':
+        BuzzerOn(784);
+        Graphics_drawStringCentered(&g_sContext, "S3",
+        AUTO_STRING_LENGTH,
+                                    48, 45, OPAQUE_TEXT);
+        Graphics_flushBuffer(&g_sContext);
+
+        if (buttState() != 2)
+        {
+            missed = true;
+        }
+        break;
+    }
+    return missed;
+}
+
 int note2tune(char note)
 {
     switch (note)

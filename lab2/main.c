@@ -47,6 +47,7 @@ int main(void)
 
     state = 1;
     tc = 0;
+    bool m;
 
     bool uWon = true;
     //__enable_interrupt();
@@ -64,7 +65,7 @@ int main(void)
         {
         case 1:
             idle();
-            state = 3;
+            state = 6;
             break;
         case 2: //a debug state, mostly
             lightUserLED(buttState());
@@ -82,7 +83,7 @@ int main(void)
             break;
         case 3:
             countdown();
-            //blindMice();
+            bool missed = false;
             int currtime = timer_cnt;
             int i;
             int el = timer_cnt - currtime;
@@ -92,12 +93,7 @@ int main(void)
 
             while ((tc < 4) && (reset == false))
             {
-                currKey = getKey();
-                if (currKey == '#')
-                {
-                    state = 5;
-                    reset = true;
-                }
+
                 switch (tc)
                 {
                 case 0:
@@ -113,6 +109,19 @@ int main(void)
                     break;
                 }
 
+                currKey = getKey();
+                if (currKey == '#')
+                {
+                    state = 5;
+                    reset = true;
+                }
+
+                if (missed)
+                {
+                    state = 4;
+                    reset = true;
+                }
+
             }
             BuzzerOff();
             uWon = true;
@@ -125,7 +134,46 @@ int main(void)
         case 5:
             replay();
             uWon = false;
-            state = 3;
+            state = 6;
+            break;
+        case 6:
+
+            m = false;
+            int n;
+            countdown();
+
+            int ctime = tc;
+            int e = tc - ctime;
+            while (m == false && currKey != '#' && tc - ctime < 4)
+            {
+
+                if (e < 1000)
+                {
+                    m = playSong('E');
+                    currKey = getKey();
+                }
+
+                else if (e >= 1000 and e < 2000)
+                {
+                    m = playSong('D');
+                    currKey = getKey();
+                }
+
+                else (e >= 2000 and e < 3000)
+                {
+                    m = playSong('C');
+                    currKey = getKey();
+                }
+
+                uWon = true;
+            }
+
+            state = 4;
+            if (currKey == '#')
+            {
+                state = 5;
+            }
+
             break;
         }
     }
