@@ -11,6 +11,6 @@
 
 void runtimerA2(void);
 void stoptimerA2(int reset);
-
+void displayTime(unsigned int inTme);
 
 #endif /* TIMER_H_ */

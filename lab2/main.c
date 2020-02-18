@@ -12,7 +12,6 @@
  * main.c
  */
 
-
 /*
  * RUBRIC CHECKLIST
  *
@@ -47,12 +46,13 @@ int main(void)
     runtimerA2();
 
     state = 1;
+    tc = 0;
 
     bool uWon = false;
     //__enable_interrupt();
-     _BIS_SR(GIE);
-    timer_cnt=0;
-     tdir=1;
+    _BIS_SR(GIE);
+    timer_cnt = 0;
+    tdir = 1;
 
     Graphics_clearDisplay(&g_sContext); // Clear the display
 
@@ -64,18 +64,27 @@ int main(void)
         {
         case 1:
             idle();
+            state = 3;
             break;
-        case 2:
+        case 2://a debug state, mostly
             lightUserLED(buttState());
             setLeds(buttState());
-            if(buttState() == 0x01){
+            if (buttState() == 0x01)
+            {
                 BuzzerOn(440);
             }
-            else{
+            else
+            {
                 BuzzerOff();
+
             }
-           // runtimerA2();
+            // runtimerA2();
             break;
+        case 3:
+            countdown();
+            state = 2;
+            break;
+
         }
     }
 

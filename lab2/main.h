@@ -7,7 +7,15 @@
 
 #ifndef MAIN_H_
 #define MAIN_H_
+#include <msp430.h>
+#include "peripherals.h"
+#include "idle.h"
+#include "end.h"
+#include "main.h"
+#include "timer.h"
+#include "butt.h"
 #include  "stdbool.h"
+#include "song.h"
 
 
 
@@ -18,5 +26,6 @@ bool change;
 int state;
 long unsigned int timer_cnt;
 char tdir;
+int tc;
 
 #endif /* MAIN_H_ */
