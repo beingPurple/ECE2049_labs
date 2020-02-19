@@ -27,5 +27,7 @@ int state;
 long unsigned int timer_cnt;
 char tdir;
 int tc;
-
+int missed;
+char currKey;
+bool m;
 #endif /* MAIN_H_ */

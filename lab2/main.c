@@ -82,51 +82,7 @@ int main(void)
             // runtimerA2();
             break;
         case 3:
-            countdown();
-            bool missed = false;
-            int currtime = timer_cnt;
-            int i;
-            int el = timer_cnt - currtime;
-            bool reset = false;
 
-            tc = 0;
-
-            while ((tc < 4) && (reset == false))
-            {
-
-                switch (tc)
-                {
-                case 0:
-                    //play note, check for time
-                    BuzzerOn(note2tune('E'));
-
-                    break;
-                case 1:
-                    BuzzerOn(note2tune('D'));
-                    break;
-                case 2:
-                    BuzzerOn(note2tune('C'));
-                    break;
-                }
-
-                currKey = getKey();
-                if (currKey == '#')
-                {
-                    state = 5;
-                    reset = true;
-                }
-
-                if (missed)
-                {
-                    state = 4;
-                    reset = true;
-                }
-
-            }
-            BuzzerOff();
-            uWon = true;
-            state = 4;
-            break;
         case 4:
             gameOver(uWon);
             state = 5;
@@ -134,46 +90,56 @@ int main(void)
         case 5:
             replay();
             uWon = false;
+            currKey = 0;
             state = 6;
             break;
         case 6:
 
             m = false;
-            int n;
+
+            missed = 0;
+            currKey = 0;
+            bool done;
+            done = false;
             countdown();
-
-            int ctime = tc;
-            int e = tc - ctime;
-            while (m == false && currKey != '#' && tc - ctime < 4)
+            while (currKey != '#' && missed < 4 && done != true)
             {
-
-                if (e < 1000)
+                writeSong(100, 'E');
+                if (m == true)
                 {
-                    m = playSong('E');
-                    currKey = getKey();
+                    missed++;
+                    m = false;
                 }
-
-                else if (e >= 1000 and e < 2000)
+                writeSong(100, 'D');
+                if (m == true)
                 {
-                    m = playSong('D');
-                    currKey = getKey();
+                    missed++;
+                    m = false;
                 }
-
-                else (e >= 2000 and e < 3000)
+                writeSong(100, 'C');
+                if (m == true)
                 {
-                    m = playSong('C');
-                    currKey = getKey();
+                    missed++;
+                    m = false;
                 }
-
-                uWon = true;
+                done = true;
             }
 
+            if (missed < 2)
+            {
+                uWon = true;
+            }
+            else
+            {
+                uWon = false;
+            }
             state = 4;
+
             if (currKey == '#')
             {
                 state = 5;
             }
-
+            done = false;
             break;
         }
     }
@@ -190,8 +156,8 @@ void swDelay(char numLoops)
 //
 // smj, ECE2049, 25 Aug 2013
 
-    volatile unsigned int i, j;  // volatile to prevent removal in optimization
-                                 // by compiler. Functionally this is useless code
+    volatile unsigned int i, j; // volatile to prevent removal in optimization
+                                // by compiler. Functionally this is useless code
 
     for (j = 0; j < numLoops; j++)
     {

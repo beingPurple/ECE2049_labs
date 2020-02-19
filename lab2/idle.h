@@ -11,5 +11,6 @@
 #include <msp430.h>
 
 void idle();
+void replay();
 
 #endif /* IDLE_H_ */

@@ -39,7 +39,7 @@ void countdown()
 
 }
 
-bool playSong(char note)
+bool playSong(char note, int currTime, int duration)
 {
     bool missed = false;
     switch (note)
@@ -51,7 +51,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 8)
+        if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
             missed = true;
         }
@@ -63,7 +63,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 4)
+        if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
             missed = true;
         }
@@ -75,7 +75,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 2)
+        if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
             missed = true;
         }
@@ -87,7 +87,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 1)
+        if (currTime > (2*(duration / 3)) && buttState() != 1)
         {
             missed = true;
         }
@@ -99,7 +99,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 8)
+        if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
             missed = true;
         }
@@ -111,7 +111,7 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 4)
+        if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
             missed = true;
         }
@@ -123,13 +123,27 @@ bool playSong(char note)
                                     48, 45, OPAQUE_TEXT);
         Graphics_flushBuffer(&g_sContext);
 
-        if (buttState() != 2)
+        if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
             missed = true;
         }
         break;
     }
     return missed;
+}
+
+void writeSong(int dur, char note)
+{
+    timer_cnt = 0;
+    while (timer_cnt < dur && currKey != '#')
+    {
+        m = playSong(note, timer_cnt, dur);
+        currKey = getKey();
+
+    }
+   if(currKey == '#'){
+       state = 5;
+   }
 }
 
 int note2tune(char note)
