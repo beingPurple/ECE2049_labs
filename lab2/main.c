@@ -49,7 +49,7 @@ int main(void)
     tc = 0;
     bool m;
 
-    bool uWon = true;
+    bool uWon = false;
     //__enable_interrupt();
     _BIS_SR(GIE);
     timer_cnt = 0;
@@ -96,11 +96,10 @@ int main(void)
         case 6:
 
             m = false;
-
-            missed = 0;
             currKey = 0;
             bool done;
             done = false;
+            missed = 0;
             countdown();
             while (currKey != '#' && missed < 4 && done != true)
             {
