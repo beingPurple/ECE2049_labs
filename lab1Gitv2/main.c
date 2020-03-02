@@ -59,14 +59,14 @@ void main(void)
                srand(seed);
                swDelay(1);
 
-               sDeck = shuffle();
+               shuffle(sDeck,set);
                swDelay(2);
 
                Graphics_clearDisplay(&g_sContext); // Clear the display
                Graphics_drawStringCentered(&g_sContext, "Dealing 2 cards", AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
                Graphics_flushBuffer (&g_sContext);
-               uhand = firstdeal();
-               chand = firstdeal();
+               firstdeal(sDeck,uhand,cardcounter);
+               firstdeal(sDeck,chand,cardcounter);
                swDelay(2);
 
                Graphics_clearDisplay(&g_sContext); // Clear the display
