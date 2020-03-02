@@ -9,10 +9,11 @@
 
 int keypress(void)
 {
-    char cutvar[2];
+    char cutvar[3];
     bool digitOne = false;
     bool digitTwo = false;
     int c;
+    cutvar[2] = '\0';
 
 
     Graphics_clearDisplay(&g_sContext); // Clear the display

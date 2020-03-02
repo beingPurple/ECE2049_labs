@@ -26,7 +26,7 @@ char keyGetter(void){
         {
             currKey = getKey();
         }
-        return getKey;
+        return currKey;
 }
 void initLeds(void)
 {
