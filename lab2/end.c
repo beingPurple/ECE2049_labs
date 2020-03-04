@@ -43,7 +43,7 @@ void gameOver(bool uWon)
         for (i = 0; i < REPEATLENGTH; i++)
         {
             setLeds(~l);
-            Graphics_drawStringCentered(&g_sContext, "Missed a note!",
+            Graphics_drawStringCentered(&g_sContext, "Missed too many!",
             AUTO_STRING_LENGTH,
                                         48, 15,
                                         OPAQUE_TEXT);

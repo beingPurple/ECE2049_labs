@@ -137,7 +137,7 @@ void playSong(char note, int currTime, int duration)
 void writeSong(int dur, char note)
 {
     timer_cnt = 0;
-    while (timer_cnt < dur) && currKey != '#')
+    while (timer_cnt < dur && currKey != '#')
     {
        // m = playSong(note, timer_cnt, dur);
         playSong(note, timer_cnt, dur);
