@@ -39,9 +39,9 @@ void countdown()
 
 }
 
-bool playSong(char note, int currTime, int duration)
+void playSong(char note, int currTime, int duration)
 {
-    bool missed = false;
+    //bool mmissed = false;
     switch (note)
     {
     case 'A':
@@ -53,7 +53,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'B':
@@ -65,7 +65,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'C':
@@ -77,7 +77,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'D':
@@ -89,7 +89,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 1)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'E':
@@ -101,7 +101,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'F':
@@ -113,7 +113,7 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
-            missed = true;
+            missed++;
         }
         break;
     case 'G':
@@ -125,11 +125,11 @@ bool playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
-            missed = true;
+            missed++;
         }
         break;
     }
-    return missed;
+    //return mmissed;
 }
 
 void writeSong(int dur, char note)
@@ -137,7 +137,8 @@ void writeSong(int dur, char note)
     timer_cnt = 0;
     while (timer_cnt < dur && currKey != '#')
     {
-        m = playSong(note, timer_cnt, dur);
+       // m = playSong(note, timer_cnt, dur);
+        playSong(note, timer_cnt, dur);
         currKey = getKey();
 
     }

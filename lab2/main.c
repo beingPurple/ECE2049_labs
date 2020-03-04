@@ -104,13 +104,13 @@ int main(void)
             countdown();
             while (currKey != '#' && missed < 4 && done != true)
             {
-                writeSong(100, 'E');
+                writeSong(50, 'E');
                 if (m == true)
                 {
                     missed++;
                     m = false;
                 }
-                writeSong(100, 'D');
+                writeSong(50, 'D');
                 if (m == true)
                 {
                     missed++;
@@ -122,10 +122,64 @@ int main(void)
                     missed++;
                     m = false;
                 }
+                writeSong(50, 'E');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(50, 'D');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(100, 'C');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(50, 'F');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(50, 'E');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(100, 'D');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(50, 'F');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(50, 'E');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
+                writeSong(100, 'D');
+                if (m == true)
+                {
+                    missed++;
+                    m = false;
+                }
                 done = true;
             }
 
-            if (missed < 2)
+            if (missed / 3 < 6)
             {
                 uWon = true;
             }
