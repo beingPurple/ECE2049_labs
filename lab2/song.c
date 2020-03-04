@@ -41,7 +41,7 @@ void countdown()
 
 void playSong(char note, int currTime, int duration)
 {
-    //bool mmissed = false;
+
     switch (note)
     {
     case 'A':
@@ -53,7 +53,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
-            missed++;
+
         }
         break;
     case 'B':
@@ -65,7 +65,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
-            missed++;
+
         }
         break;
     case 'C':
@@ -77,7 +77,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
-            missed++;
+
         }
         break;
     case 'D':
@@ -89,7 +89,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 1)
         {
-            missed++;
+
         }
         break;
     case 'E':
@@ -101,7 +101,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 8)
         {
-            missed++;
+
         }
         break;
     case 'F':
@@ -113,7 +113,7 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 4)
         {
-            missed++;
+
         }
         break;
     case 'G':
@@ -125,17 +125,19 @@ void playSong(char note, int currTime, int duration)
 
         if (currTime > (2*(duration / 3)) && buttState() != 2)
         {
+
             missed++;
         }
         break;
     }
     //return mmissed;
+
 }
 
 void writeSong(int dur, char note)
 {
     timer_cnt = 0;
-    while (timer_cnt < dur && currKey != '#')
+    while (timer_cnt < dur) && currKey != '#')
     {
        // m = playSong(note, timer_cnt, dur);
         playSong(note, timer_cnt, dur);

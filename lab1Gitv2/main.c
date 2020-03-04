@@ -50,8 +50,6 @@ void main(void)
            {
            case 0: //idle case
                idle(); //idle func(pretty lights, wait for player to enter a number)
-               Graphics_drawStringCentered(&g_sContext, "after idle", AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
-               Graphics_flushBuffer(&g_sContext);
                state++;
                break;
            case 1:
@@ -59,14 +57,25 @@ void main(void)
                swDelay(3);
                seed = keypress();
                srand(seed);
-               char seed = seed;
-               Graphics_clearDisplay(&g_sContext); // Clear the display
-               Graphics_drawStringCentered(&g_sContext, seed , AUTO_STRING_LENGTH, 48, 15, OPAQUE_TEXT);
-               Graphics_flushBuffer(&g_sContext);
+               swDelay(1);
 
-               //shuffle and deal, etc.
-               //cut func
-               //shuffle and deal func
+               shuffle(sDeck,set);
+               swDelay(2);
+
+               Graphics_clearDisplay(&g_sContext); // Clear the display
+               Graphics_drawStringCentered(&g_sContext, "Dealing 2 cards", AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
+               Graphics_flushBuffer (&g_sContext);
+               firstdeal(sDeck,uhand,cardcounter);
+               firstdeal(sDeck,chand,cardcounter);
+               swDelay(2);
+
+               Graphics_clearDisplay(&g_sContext); // Clear the display
+               Graphics_drawStringCentered(&g_sContext, uhand, AUTO_STRING_LENGTH, 48, 25, OPAQUE_TEXT);
+               Graphics_drawStringCentered(&g_sContext, chand[2], AUTO_STRING_LENGTH, 48, 35, OPAQUE_TEXT);
+               Graphics_flushBuffer (&g_sContext);
+               swDelay(2);
+
+
                //bet func (changes s)
                state++;
                break;
